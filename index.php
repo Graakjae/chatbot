@@ -44,32 +44,27 @@
                             </div>
                         </div>";
                         }}?>
+                        
                 <div id="bot_response"></div>
                 <div class="inputfield">
-                    <input type="text" class="input" name="user_input" id="user_input" placeholder="Enter a message">
+                    <input type="text" class="input" name="user_input" id="user_input" placeholder="Enter a message" oninput="characterCounter()" maxlength="500"/>
+                    <p><span id="charCount" value="characterCounter()">0</span>/500</p>
                     <img src="send.png" alt="send" class="sendImage" />
                     <input type="submit" value="Submit">
-                    </input>
                 </div>
             </div>
+           
         </div>
+         <button type="submit" name="destroy-session-button">Destroy Session</button>
     </form>
-    <!-- <script>
-        // JavaScript to handle the form submission and display the bot's response
-        document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            let userInput = document.getElementById('user_input').value;
-            fetch('chatbot.php', {
-                method: 'POST',
-                body: 'user_input=' + userInput,
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                }
-            }).then(response => response.json()).then(data => {
-                document.getElementById('bot_response').textContent = data.bot_response;
-            });
-        });
-    </script> -->
+   <script>
+        function characterCounter(){
+            var text = document.getElementById("user_input").value;
+            console.log(text.length);
+            var charCount = text.length;
+            document.getElementById("charCount").innerHTML = charCount;
+        }
+    </script>
 </body>
 
 </html>
