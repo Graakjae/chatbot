@@ -3,7 +3,9 @@ session_start();
 
 // Define predefined responses and questions as an associative array
 $responses = array(
-    "1" => "This is response 1.",
+    "Hello" => "Hello! 👋",
+    "Hi" => "Hello! 👋",
+    "Hej" => "Hello! 👋",
     "2" => "This is response 2."
 );
 
@@ -37,5 +39,12 @@ $_SESSION["responseData"][] = array(
 
 // Redirect the user back to index.php
 header('Location: index.php');
+
+//Destroy the session button
+if (isset($_POST['destroy-session-button'])) {
+    session_destroy();
+    header('Location: index.php'); // Redirect to the index page after destroying the session
+    exit;
+}
 
 ?>
