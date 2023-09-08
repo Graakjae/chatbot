@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 
 // Define predefined responses and questions as an associative array
@@ -12,22 +13,13 @@ $responses = array(
 // Default response when the bot doesn't understand the question
 $defaultResponse = "I'm sorry, I don't understand your question.";
 
-
-// Loop through the responses and add them to the responseData array
-foreach ($responses as $key => $response) {
-    $responseData[] = array(
-        'question' => "Question $key", // You can replace this with actual questions
-        'response' => $response
-    );
-}
-
-// Get the user's input (you can replace this with actual user input)
-$userInput = isset($_POST['user_input']) ? $_POST['user_input'] : '';
+// Get the user's input
+$userInput = isset($_POST['user_input']) ? $_POST['user_input'] : null;
 
 // Check if the user input matches a predefined response
 if (isset($responses[$userInput])) {
     $botResponse = $responses[$userInput];
-} else {
+} else{
     $botResponse = $defaultResponse;
 }
 
@@ -39,12 +31,14 @@ $_SESSION["responseData"][] = array(
 
 // Redirect the user back to index.php
 header('Location: index.php');
+exit;
 
-//Destroy the session button
+//Destroy the session when the user clicks the button
 if (isset($_POST['destroy-session-button'])) {
     session_destroy();
-    header('Location: index.php'); // Redirect to the index page after destroying the session
+    header('Location: index.php'); // Redirect the user back to index.php
     exit;
 }
 
 ?>
+
