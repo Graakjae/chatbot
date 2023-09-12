@@ -27,7 +27,6 @@ body {
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    z-index: 9999;
     position: relative;
 }
 
@@ -51,7 +50,6 @@ h1 {
 }
 
 .inputWrapper {
-    height: 100%;
     width: 100%;
     justify-content: flex-end;
     display: flex;
@@ -179,22 +177,23 @@ input:focus {
     gap: 10px;
 }
 
-.testDiv {
-    width: 300px;
-    height: 100px;
-    border: 1px solid white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    border-radius: 8px;
-    background-color: #7866e2;
-    color: #fff;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.earlierChatsWrapper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 20%;
+    height: 100%;
+    border-right: 1px solid #7866e2;
+    overflow: scroll;
 }
 
-.testDiv2 {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
+.newChatButton {
+    border-radius: 10px;
+    padding: 0px 20px;
+    margin-left: 10px;
+    cursor: pointer;
+    color: #7866e2;
+    font-weight: 500;
+    font-size: 15px;
+    z-index: 100;
 }
