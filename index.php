@@ -1,6 +1,6 @@
 <?php session_start(); ?>
-<?php include("test.php") 
-?>
+<!-- <?php include("test.php") 
+?> -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,15 +13,6 @@
 </head>
 
 <body>
-    <div class="testDiv2">
-        <div class="testDiv">
-            <?php 
-                echo $variable;
-                echo "<br>";
-                echo $variable2;
-            ?>
-        </div>
-    </div>
     <form method="post" action="chatbot.php">
         <div class="chatBotWrapper">
             <div class="chatbot">
@@ -38,12 +29,12 @@
                         </div>
                     </div>
                  <?php if(isset ($_SESSION["responseData"])){
-                        foreach ($_SESSION["responseData"] as $data) {
+                        foreach ($_SESSION["responseData"] as $chat => $chatEntry) {
                         echo 
                         "<div class=robotTextWrapper>
                             <div class=flexEnd>
                                 <div class=userText>
-                                    <p>{$data['question']}</p>
+                                    <p>{$chatEntry['question']}</p>
                                 </div> 
                             </div>
                             <div class=flexStart>
@@ -51,12 +42,13 @@
                                     <img src=chatbot.png alt=chatbotBubble class=chatbotBubbleImage />
                                 </div>  
                                 <div class=robotText>
-                                    <p>{$data['response']}</p>
+                                    <p>{$chatEntry['response']}</p>
                                 </div>
                             </div>
                         </div>";
-                        }}?>
-                        
+                        }}
+
+                       ?>
                 <div id="bot_response"></div>
                     <div class="inputWrapper">
                         <div class="inputfield">
@@ -79,12 +71,36 @@
                                 <img src="send.png" alt="send" class="sendImage" />
                             </button>
                         </div>
-                  </div>
+                    </div>
+                </div>
             </div>
-        </div>
-         <button type="submit" name="destroy-session-button">Destroy Session</button>
-    </form>
-   <script>
+            <?php
+            // ... (your existing code)
+            
+            // Check if deletedChats array exists and is not empty
+            if (isset($_SESSION["deletedChats"])) {
+                echo '<div class="earlierChatsWrapper">';
+                echo '<button type="submit" name="destroy-session-button" class="newChatButton">+ New chat</button>';
+                echo '<h2>Earlier Chats</h2>';
+                $deletedChatsLength = count($_SESSION["deletedChats"]);
+                echo "Total chats: " . $deletedChatsLength;
+                echo "<br>";
+                var_dump($_SESSION["deletedChats"][0]);
+                // Loop through deletedChats array and display deleted chats
+                foreach ($_SESSION["deletedChats"] as $chatIndex => $chat) {
+                    echo "<p> Chat ";
+                    echo $chatIndex + 1;
+                    echo "</p>";
+                    echo '<button type="submit" name="restore-session-button">Restore chat</button>';
+                    echo '</div>'; 
+                }
+                echo '</div>'; 
+            }
+            ?>
+         
+        </form>
+
+        <script>
         // While loop to simulate a delay
         // let startTime = new Date().getTime();
         // while (new Date().getTime() < startTime + 3000);
@@ -107,6 +123,7 @@
             var element = document.getElementById("bot_response");
             element.scrollTop = element.scrollHeight;
         }
+
 
     </script>
 </body>
