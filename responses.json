@@ -1,10 +1,45 @@
 {
-    "hello": "Hello! 👋",
-    "hi": "Hello! 👋",
-    "hej": "Hello! 👋",
-    "how are you?": "I'm just a computer program, but I'm here to help you!",
-    "what's your name?": "I'm just a chatbot, so I don't have a name, but you can call me ChatGPT.",
-    "tell me a joke": "Why don't scientists trust atoms? Because they make up everything!",
-    "thank you": "You're welcome! 😊",
-    "goodbye": "Goodbye! Have a great day!"
+    "keywords": {
+        "greetings": [
+            "hello",
+            "hej",
+            "hi",
+            "hey",
+            "greetings",
+            "good morning",
+            "good afternoon",
+            "good evening",
+            "good day"
+        ],
+        "bye": [
+            "bye",
+            "goodbye",
+            "see you",
+            "farewell",
+            "take care",
+            "good night",
+            "night",
+            "later",
+            "see ya",
+            "adios",
+            "ciao",
+            "au revoir",
+            "sayonara",
+            "aloha",
+            "shalom",
+            "arrivederci",
+            "auf wiedersehen",
+            "hasta la vist"
+        ],
+        "thanks": ["thanks", "thank you", "thank you very much", "thanks a lot", "thanks a bunch", "cheers"],
+        "age": ["how old", "age", "old"],
+        "name": ["who are you", "what is your name", "what's your name"]
+    },
+    "answers": {
+        "greetings": "Hello there! 👋",
+        "bye": "Bye! 👋",
+        "thanks": "You're welcome! 😊",
+        "age": "Dont ever ask a chatbot about its age 😡",
+        "name": "My name is Chatbot"
+    }
 }
