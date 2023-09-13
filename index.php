@@ -75,7 +75,6 @@
                 </div>
             </div>
             <?php
-            // ... (your existing code)
             
             // Check if deletedChats array exists and is not empty
             if (isset($_SESSION["deletedChats"])) {
