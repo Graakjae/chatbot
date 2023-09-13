@@ -68,7 +68,7 @@
                                 value="Submit" 
                                 id="sendButton" 
                                 disabled>
-                                <img src="send.png" alt="send" class="sendImage" />
+                                <img src="sendDefault.png" alt="send" class="sendImage" id="sendImg" />
                             </button>
                         </div>
                     </div>
@@ -77,12 +77,17 @@
             <?php
             
             // Check if deletedChats array exists and is not empty
-            if (isset($_SESSION["deletedChats"])) {
-                echo '<div class="earlierChatsWrapper">';
-                echo '<button type="submit" name="destroy-session-button" class="newChatButton">+ New chat</button>';
-                echo '<h2>Earlier Chats</h2>';
+            echo '<div class="earlierChatsWrapper">';
+            echo '<h2>Earlier Chats</h2>';
+            if(isset($_SESSION["deletedChats"])){
                 $deletedChatsLength = count($_SESSION["deletedChats"]);
                 echo "Total chats: " . $deletedChatsLength;
+            } else{
+                echo "Total chats: 0";
+            }
+            if (isset($_SESSION["deletedChats"])) {
+                echo '<div class="">';
+                echo '<button type="submit" name="destroy-session-button" class="newChatButton">+ New chat</button>';
                 echo "<br>";
                 var_dump($_SESSION["deletedChats"][0]);
                 // Loop through deletedChats array and display deleted chats
@@ -91,10 +96,11 @@
                     echo $chatIndex + 1;
                     echo "</p>";
                     echo '<button type="submit" name="restore-session-button">Restore chat</button>';
-                    echo '</div>'; 
+                    echo '</>'; 
                 }
                 echo '</div>'; 
             }
+            echo "</div>";
             ?>
          
         </form>
@@ -111,10 +117,10 @@
             
              if(text.length <= 0){
                 document.getElementById("sendButton").disabled = true;
-                document.getElementById("sendButton").style.border = "1px solid gray";
+                document.getElementById("sendImg").src="sendDefault.png";
             } else{
                 document.getElementById("sendButton").disabled = false;
-                document.getElementById("sendButton").style.border = "1px solid red";
+                document.getElementById("sendImg").src="send.png";
             }
         }
 
