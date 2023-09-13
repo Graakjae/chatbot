@@ -16,25 +16,39 @@ $userInput = isset($_POST['user_input']) ? $_POST['user_input'] : null;
 $botResponse = $defaultResponse;
 
 // Check if the user input contains a word that matches a predefined response
+$matchFound = false; // Flag to track if a match is found
+
 if (!empty($userInput)) {
-    foreach ($responses as $keyword => $response) {
-        if (stripos($userInput, $keyword) !== false) {
-            $botResponse = $response;
-            break; // Stop checking if a match is found
+    foreach ($responses['keywords'] as $category => $keywords) {
+        foreach ($keywords as $keyword) {
+            if (stripos($userInput, $keyword) !== false) {
+                // Push the answer associated with the matched keyword to the response array
+                $botResponse = $responses['answers'][$category];
+                $_SESSION["responseData"][] = array(
+                    'question' => $userInput,
+                    'response' => $botResponse
+                );
+                // Exit the loop once a match is found
+                $matchFound = true;
+                break 2;
+            }
         }
     }
+}
+
+// Set the default response if no match is found
+if (!$matchFound) {
+    $botResponse = $defaultResponse;
+    $_SESSION["responseData"][] = array(
+        'question' => $userInput,
+        'response' => $botResponse
+    );
 }
 
 // Create a new session variable for storing deleted chats
 if (!isset($_SESSION["deletedChats"])) {
     $_SESSION["deletedChats"] = [];
 }
-
-// Combine the bot's response with the responseData array
-$_SESSION["responseData"][] = array(
-    'question' => $userInput ? $userInput : "",
-    'response' => $botResponse
-);
 
 // Check if the user wants to destroy the session
 if (isset($_POST['destroy-session-button'])) {
