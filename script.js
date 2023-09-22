@@ -1,3 +1,17 @@
+function characterCounter() {
+    var text = document.getElementById("user_input").value;
+    var charCount = text.length;
+    document.getElementById("charCount").innerHTML = charCount;
+
+    if (text.length < 0) {
+        document.getElementById("sendButton").disabled = true;
+        document.getElementById("sendImg").src = "sendDefault.png";
+    } else {
+        document.getElementById("sendButton").disabled = false;
+        document.getElementById("sendImg").src = "send.png";
+    }
+}
+
 function retrieveSessionData() {
     // Send a Fetch GET request to the server endpoint
     fetch("getResponseData.php")
@@ -38,21 +52,27 @@ function sendUserInput() {
                 // Append the new chat message to the chat container
                 appendChatMessage(userInput, data.responseData[data.responseData.length - 1].response);
             }
-            // Clear the input field
-            document.getElementById("user_input").value = "";
         })
         .catch(function (error) {
             console.error("Error updating chat data:", error);
         });
-
-    // Clear the input field
-    document.getElementById("user_input").value = "";
 }
 
 // Add an event listener to the form submission
 document.getElementById("chatForm").addEventListener("submit", function (event) {
     event.preventDefault(); // Prevent the default form submission behavior
     sendUserInput(); // Call the sendUserInput function
+    document.getElementById("user_input").value = "";
+    text = "";
+    text.length = 0;
+    characterCounter();
+    if (text.length <= 0) {
+        document.getElementById("sendButton").disabled = true;
+        document.getElementById("sendImg").src = "sendDefault.png";
+    } else {
+        document.getElementById("sendButton").disabled = false;
+        document.getElementById("sendImg").src = "send.png";
+    }
 });
 
 function updateChatInterface(sessionData) {
@@ -70,7 +90,6 @@ function updateChatInterface(sessionData) {
         var userTextDiv = document.createElement("div");
         userTextDiv.className = "userText";
 
-        // Create and populate elements for the chat message
         var responsePara = document.createElement("p");
         responsePara.className = "response";
         responsePara.textContent = chatEntry.response;
@@ -81,7 +100,6 @@ function updateChatInterface(sessionData) {
         var robotTextDiv = document.createElement("div");
         robotTextDiv.className = "robotText";
 
-        // Create and populate elements for the chat message
         var questionPara = document.createElement("p");
         questionPara.className = "question";
         questionPara.textContent = chatEntry.question;
@@ -92,7 +110,6 @@ function updateChatInterface(sessionData) {
         flexEndDiv.appendChild(userTextDiv);
         flexStartDiv.appendChild(robotTextDiv);
 
-        // Append the question and response paragraphs to the message div
         robotTextDiv.appendChild(responsePara);
         userTextDiv.appendChild(questionPara);
     });
