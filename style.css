@@ -138,6 +138,14 @@ input:focus {
     position: relative;
 }
 
+.defaultRobotText {
+    background-color: #f2f1f1;
+    padding: 0 10px;
+    border-radius: 10px;
+    max-width: 50%;
+    padding-left: 10px;
+    position: relative;
+}
 .userText {
     display: flex;
     justify-content: flex-end;
