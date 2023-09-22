@@ -11,10 +11,7 @@ function clearSessionData() {
         .then(function (response) {
             return response.json(); // Parse the JSON response
         })
-        .then(function (data) {
-            // Handle the response (e.g., display a success message or updated session data)
-            console.log(data.message);
-
+        .then(function () {
             // Clear the chat container on the client side
             clearChatContainer();
         })
