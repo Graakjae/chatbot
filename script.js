@@ -3,7 +3,7 @@ function characterCounter() {
     var charCount = text.length;
     document.getElementById("charCount").innerHTML = charCount;
 
-    if (text.length < 0) {
+    if (text.length <= 0) {
         document.getElementById("sendButton").disabled = true;
         document.getElementById("sendImg").src = "sendDefault.png";
     } else {
