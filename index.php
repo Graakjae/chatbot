@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-    
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,11 +14,11 @@
                 <div class="header">
                     <h1>Chatbot</h1>
                     <button id="clearSessionButton" type="button">Clear session</button>
-                    <img src="chatbot.png" alt="chatbot" class="chatbotImage" />
+                    <img src="img/chatbot.png" alt="chatbot" class="chatbotImage" />
                 </div>
                     <div class="defaultRobotTextWrapper">
                         <div class="imageCircle">
-                            <img src="chatbot.png" alt="chatbotBubble" class="chatbotBubbleImage" />
+                            <img src="img/chatbot.png" alt="chatbotBubble" class="chatbotBubbleImage" />
                         </div>
                         <div for="user_input" class="defaultRobotText">
                             <p>Hello! 👋 What can i help you with today?</p>
@@ -46,15 +45,15 @@
                                 id="sendButton" 
                                 disabled
                                 >
-                                <img src="sendDefault.png" alt="send" class="sendImage" id="sendImg" />
+                                <img src="img/sendDefault.png" alt="send" class="sendImage" id="sendImg" />
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
         </form>
-    <script src="script.js"></script> 
-    <script src="clearSession.js"></script> 
+    <script src="scripts/script.js"></script> 
+    <script src="scripts/clearSession.js"></script> 
     </body>
 
 </html>

@@ -5,7 +5,7 @@ document.getElementById("clearSessionButton").addEventListener("click", function
 
 function clearSessionData() {
     // Send a Fetch POST request to a PHP script to clear the session data
-    fetch("clearSessionData.php", {
+    fetch("../backend/clearSessionData.php", {
         method: "POST"
     })
         .then(function (response) {

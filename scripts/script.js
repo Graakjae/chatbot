@@ -5,16 +5,16 @@ function characterCounter() {
 
     if (text.length <= 0) {
         document.getElementById("sendButton").disabled = true;
-        document.getElementById("sendImg").src = "sendDefault.png";
+        document.getElementById("sendImg").src = "img/sendDefault.png";
     } else {
         document.getElementById("sendButton").disabled = false;
-        document.getElementById("sendImg").src = "send.png";
+        document.getElementById("sendImg").src = "img/send.png";
     }
 }
 
 function retrieveSessionData() {
     // Send a Fetch GET request to the server endpoint
-    fetch("getResponseData.php")
+    fetch("../backend/getResponseData.php")
         .then(function (response) {
             return response.json(); // Parse the JSON response
         })
@@ -38,7 +38,7 @@ function sendUserInput() {
     formData.append("user_input", userInput);
 
     // Send a Fetch POST request to update_response_data.php
-    fetch("updateResponseData.php", {
+    fetch("../backend/updateResponseData.php", {
         method: "POST",
         body: formData
     })
@@ -68,10 +68,10 @@ document.getElementById("chatForm").addEventListener("submit", function (event) 
     characterCounter();
     if (text.length <= 0) {
         document.getElementById("sendButton").disabled = true;
-        document.getElementById("sendImg").src = "sendDefault.png";
+        document.getElementById("sendImg").src = "img/sendDefault.png";
     } else {
         document.getElementById("sendButton").disabled = false;
-        document.getElementById("sendImg").src = "send.png";
+        document.getElementById("sendImg").src = "img/send.png";
     }
 });
 

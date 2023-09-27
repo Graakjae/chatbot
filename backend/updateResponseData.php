@@ -2,7 +2,7 @@
 session_start();
 
 // Read the JSON file into an associative array
-$responsesJSON = file_get_contents('responses.json');
+$responsesJSON = file_get_contents('../responses.json');
 $responses = json_decode($responsesJSON, true);
 
 // Default response when the bot doesn't understand the question
