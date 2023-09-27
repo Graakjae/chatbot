@@ -46,7 +46,6 @@ function sendUserInput() {
             return response.json(); // Parse the JSON response (if needed)
         })
         .then(function (data) {
-            // Handle the response (e.g., display a success message)
             // Check if responseData exists and has elements
             if (data.responseData && data.responseData.length > 0) {
                 // Append the new chat message to the chat container
